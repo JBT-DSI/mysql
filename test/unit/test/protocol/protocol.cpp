@@ -690,7 +690,7 @@ BOOST_AUTO_TEST_CASE(deserialize_ping_response_)
         BOOST_TEST_CONTEXT(tc.name)
         {
             diagnostics diag;
-            auto err = deserialize_ping_response(tc.message, db_flavor::mariadb, diag);
+            auto err = deserialize_ok_response(tc.message, db_flavor::mariadb, diag);
 
             BOOST_TEST(err == tc.expected_err);
             BOOST_TEST(diag.server_message() == tc.expected_msg);
