@@ -44,6 +44,7 @@ add_executable(
     test/network_algorithms/execute.cpp
     test/network_algorithms/close_statement.cpp
     test/network_algorithms/ping.cpp
+    test/network_algorithms/reset_connection.cpp
     test/network_algorithms/read_some_rows_static.cpp
 
     test/detail/any_stream_impl.cpp

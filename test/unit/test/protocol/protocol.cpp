@@ -665,7 +665,18 @@ BOOST_AUTO_TEST_CASE(ping_serialization)
     do_serialize_toplevel_test(cmd, serialized);
 }
 
-BOOST_AUTO_TEST_CASE(deserialize_ping_response_)
+//
+// reset_connection
+//
+BOOST_AUTO_TEST_CASE(reset_connection_serialization)
+{
+    reset_connection_command cmd;
+    const std::uint8_t serialized[] = {0x1f};
+    do_serialize_toplevel_test(cmd, serialized);
+}
+
+// OK response (ping & reset connection)
+BOOST_AUTO_TEST_CASE(deserialize_ok_response_)
 {
     struct
     {
