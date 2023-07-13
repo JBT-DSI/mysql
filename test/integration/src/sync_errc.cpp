@@ -22,11 +22,15 @@ class sync_errc_connection : public connection_base<Stream>
     using conn_type = connection<Stream>;
     using base_type = connection_base<Stream>;
 
+    // workaround for gcc5
     template <class R, class... Args>
-    using pmem_t = R (conn_type::*)(Args..., error_code&, diagnostics&);
+    struct pmem
+    {
+        using type = R (conn_type::*)(Args..., error_code&, diagnostics&);
+    };
 
     template <class R, class... Args>
-    network_result<R> fn_impl(pmem_t<R, Args...> p, Args... args)
+    network_result<R> fn_impl(typename pmem<R, Args...>::type p, Args... args)
     {
         auto res = create_initial_netresult<R>();
         invoke_and_assign(res, p, this->conn(), std::forward<Args>(args)..., res.err, *res.diag);
