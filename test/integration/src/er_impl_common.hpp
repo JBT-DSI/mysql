@@ -296,6 +296,10 @@ private:
         return fn_impl<rows_view, execution_state&>(&conn_type::prefix##read_some_rows, st);                 \
     }                                                                                                        \
     network_result<void> ping() override { return fn_impl<void>(&conn_type::prefix##ping); }                 \
+    network_result<void> reset_connection() override                                                         \
+    {                                                                                                        \
+        return fn_impl<void>(&conn_type::prefix##reset_connection);                                          \
+    }                                                                                                        \
     network_result<void> quit() override { return fn_impl<void>(&conn_type::prefix##quit); }                 \
     network_result<void> close() override { return fn_impl<void>(&conn_type::prefix##close); }               \
     BOOST_MYSQL_TEST_IMPLEMENT_GENERIC_CXX14(prefix)
