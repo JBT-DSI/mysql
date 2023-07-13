@@ -62,6 +62,7 @@ add_executable(
 
     test/misc.cpp
     test/multifn.cpp
+    test/default_completion_tokens.cpp
     test/execution_state.cpp
     test/static_execution_state.cpp
     test/results.cpp
