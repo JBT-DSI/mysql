@@ -38,7 +38,15 @@ class sync_errc_connection : public connection_base<Stream>
     }
 
 public:
+// MSVC complains about passing empty tokens, which is valid C++
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable : 4003)
+#endif
     BOOST_MYSQL_TEST_IMPLEMENT_SYNC()
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
     static constexpr const char* name() noexcept { return "sync_errc"; }
 };
 

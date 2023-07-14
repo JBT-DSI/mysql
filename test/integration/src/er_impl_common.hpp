@@ -304,11 +304,8 @@ private:
     network_result<void> close() override { return fn_impl<void>(&conn_type::prefix##close); }               \
     BOOST_MYSQL_TEST_IMPLEMENT_GENERIC_CXX14(prefix)
 
-// MSVC workaround
-#define BOOST_MYSQL_TEST_EMPTY
-
 // Use these
-#define BOOST_MYSQL_TEST_IMPLEMENT_SYNC() BOOST_MYSQL_TEST_IMPLEMENT_GENERIC(BOOST_MYSQL_TEST_EMPTY)
+#define BOOST_MYSQL_TEST_IMPLEMENT_SYNC() BOOST_MYSQL_TEST_IMPLEMENT_GENERIC()
 #define BOOST_MYSQL_TEST_IMPLEMENT_ASYNC() BOOST_MYSQL_TEST_IMPLEMENT_GENERIC(async_)
 
 // Implementation for er_network_variant
