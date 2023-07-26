@@ -42,6 +42,7 @@ target_link_libraries(
     ${_TEST_LIBRARIES}
     Boost::mysql
     boost_mysql_asio
+    socket
 )
 
 # Custom target tests; required by the Boost superproject
